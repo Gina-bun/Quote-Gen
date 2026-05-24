@@ -7,7 +7,6 @@ const errorMessage = document.getElementById("error-message")
 //share buttons
 const copyQuoteButton = document.getElementById("copy-quote")
 const twitterButton = document.getElementById("twitter-share")
-const instagramButton = document.getElementById("instagram-share")
 const whatsappButton = document.getElementById("whatsapp-share")
 
 //download quote (as image) button
