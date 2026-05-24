@@ -23,8 +23,14 @@ async function generateQuote() {
      try{
         quoteWrapper.innerHTML = `<div class="loader"></div>`
 
-        const response = await fetch(url)
-        const data = await response.json(response)
+        const [data] = await Promise.all([
+            fetch(url).then(response => response.json()),
+            new Promise(resolve => setTimeout(resolve, 800))//loader loads for at least 800ms to feel more natural
+        ])
+
+
+        quoteWrapper.textContent = ""
+
 
         displayQuote(data)
 
