@@ -13,15 +13,21 @@ const whatsappButton = document.getElementById("whatsapp-share")
 //download quote (as image) button
 const downloadButton = document.getElementById("download-quote")
 
+window.addEventListener("load", () => {
+    generateQuote()
+})
+
 async function generateQuote() {
     const url = "https://dummyjson.com/quotes/random"
 
      try{
+        quoteWrapper.innerHTML = `<div class="loader"></div>`
+
         const response = await fetch(url)
         const data = await response.json(response)
-        console.log(data)
 
         displayQuote(data)
+
 
      }
      catch(error){
@@ -32,7 +38,8 @@ async function generateQuote() {
 }
 
 function displayQuote(quote) {
-    quoteWrapper.textContent = `${quote.quote} - ${quote.author}`
+    quoteWrapper.innerHTML = `<p class="text-[18px] ">${quote.quote}</p>
+    <p class="text-right text-[16px] mt-3 font-bold">- ${quote.author}</p>`
 }
 
 generateButton.addEventListener("click", () => {
